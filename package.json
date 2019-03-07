@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Barnemat/SWC.git"
+    "url": "git+https://github.com/tsm121/TeamBLUE.git"
   },
   "author": "Team BLUE",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Barnemat/SWC/issues"
+    "url": "https://github.com/tsm121/TeamBLUE/issues"
   },
-  "homepage": "https://github.com/Barnemat/SWC#readme",
+  "homepage": "https://github.com/tsm121/TeamBLUE#readme",
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
