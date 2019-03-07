@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.jsx",
   "scripts": {
-    "dev": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "eslint": "eslint src/ --ext .js,.jsx"
+    "dev": "webpack-dev-server --open --mode development",
+    "eslint": "eslint src/ --ext .js,.jsx",
+    "serve": "node server.js",
+    "serve:prod": "NODE_ENV=production yarn build && yarn serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -40,6 +42,7 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
+    "express": "^4.16.4",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
