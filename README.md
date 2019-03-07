@@ -21,5 +21,5 @@ The express server serves the page directly from the dist (production) folder, a
 
 The reason to use `yarn dev` in addition to `yarn serve` is because it enbales hot reloading of the src folder. When making webpack or server changes, a full rebuild is needed.
 ### Linter
-[ESLint][https://eslint.org/] is installed and follows the [Airbnb JavaScript style guide][https://github.com/airbnb/javascript] and more specificaly the [React/JSX Style Guide][https://github.com/airbnb/javascript/tree/master/react].
+[ESLint](https://eslint.org/) is installed and follows the [Airbnb JavaScript style guide](https://github.com/airbnb/javascript) and more specificaly the [React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react).
 Always run `yarn eslint` and sort out the erros before committing.
