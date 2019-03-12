@@ -25,7 +25,7 @@ app.get('*', (req, res) => {
   res.sendFile(indexFile);
 });
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
   console.log('Express server running at localhost:' + PORT);

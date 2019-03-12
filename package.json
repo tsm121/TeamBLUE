@@ -9,6 +9,7 @@
     "eslint": "eslint src/ --ext .js,.jsx",
     "serve": "node server.js",
     "serve:prod": "NODE_ENV=production yarn build && yarn serve",
+    "socket-server": "node socketServer.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -42,10 +43,14 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
   }
 }
