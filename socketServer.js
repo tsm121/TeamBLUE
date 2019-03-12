@@ -41,7 +41,7 @@ let interval;
 io.on("connection", socket => {
   console.log("New client connected");
   
-  interval = setInterval(() => io.emit("FromAPI", playerUpdates), 1000);
+  interval = setInterval(() => io.emit('playerUpdate', playerUpdates), 1000);
   
   socket.on("disconnect", () => {
     clearInterval(interval);
