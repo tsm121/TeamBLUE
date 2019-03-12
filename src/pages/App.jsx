@@ -1,6 +1,8 @@
 import React from 'react';
 import socketIOClient from 'socket.io-client';
 import axios from 'axios';
+import Scene from '../components/Scene';
+import '../styles/index.css';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -39,22 +41,12 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { response } = this.state;
+    // const { response } = this.state;
+    // console.log(response);
 
     return (
       <div>
-        { response
-          ? (
-            <p>
-            Oppdatering fra socket:
-            player1:
-              { response.player1 }
-            player2:
-              { response.player2 }
-            </p>
-          )
-          : (<p>Loading...</p>)
-        }
+        <Scene />
       </div>
     );
   }
