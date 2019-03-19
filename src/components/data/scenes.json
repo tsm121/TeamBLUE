@@ -1,0 +1,15 @@
+{
+  "scenes": {
+    "scene_1": {
+      "backgroundURL": "https://bossdesigncenter.com/wp-content/uploads/2018/02/kitchen-remodeling-trends-2.jpg",
+
+      "choices": {
+        "choice1": {"Test for choice 1": "scene_2"},
+        "choice2": {"Test for choice 2": "scene_3"},
+        "choice3": {"Test for choice 3": "scene_4"},
+        "choice4": {"Test for choice 4": "scene_5"}
+      }
+    }
+
+  }
+}

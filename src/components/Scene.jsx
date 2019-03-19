@@ -7,6 +7,8 @@ import Menu from './Menu';
 import SettingsButton from './SettingsButton';
 import libmoji from 'libmoji';
 
+import scenes_lib from './data/scenes.json'
+
 
 export default class Scene extends React.Component {
   constructor(props) {
@@ -20,6 +22,8 @@ export default class Scene extends React.Component {
 
     this.handleGameStart = this.handleGameStart.bind(this);
     this.renderGame = this.renderGame.bind(this);
+    this.nextScene = this.nextScene.bind(this);
+
   }
 
   componentWillMount() {
@@ -66,13 +70,27 @@ export default class Scene extends React.Component {
 
   }
 
+  nextScene () {
+    console.log("Next scene func")
+    console.log(scenes_lib.scenes["scene_1"]["backgroundURL"])
+
+    const newBackground = scenes_lib.scenes["scene_1"]["backgroundURL"]
+
+    this.setState({
+      sceneBackgroundScr: newBackground
+    })
+
+  }
+
   renderGame() {
     const { gameStarted, player1, player2 } = this.state;
 
     if (gameStarted) {
       return (
         <div>
-          <InteractionField />
+          <InteractionField
+            nextScene={this.nextScene}
+          />
           <LeftColumn
             bitMoji={player1}
           />
