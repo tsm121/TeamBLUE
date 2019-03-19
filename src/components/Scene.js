@@ -1,4 +1,5 @@
 import React from 'react';
+
 import InteractionField from './InteractionField';
 import LeftColumn from './LeftColumn';
 import RightColumn from './RightColumn';
