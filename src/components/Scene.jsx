@@ -5,6 +5,7 @@ import LeftColumn from './LeftColumn';
 import RightColumn from './RightColumn';
 import Menu from './Menu';
 import SettingsButton from './SettingsButton';
+import libmoji from 'libmoji';
 
 
 export default class Scene extends React.Component {
@@ -13,21 +14,70 @@ export default class Scene extends React.Component {
     this.state = {
       gameStarted: true,
       sceneBackgroundScr: 'https://animatedanatomy.com/images/16-9-dummy-image6.jpg',
+      player1: {},
+      player2: {},
     };
 
     this.handleGameStart = this.handleGameStart.bind(this);
     this.renderGame = this.renderGame.bind(this);
   }
 
+  componentWillMount() {
+    this.generateInitBitEmoji()
+  }
+
+  generateInitBitEmoji() {
+
+    let gender = libmoji.genders[0]; // ["female", 2]
+    let style = libmoji.styles[0]; // ["bitstrips", 1]
+    let traits = libmoji.randTraits(libmoji.getTraits(gender[0], style[0]));
+    let outfit = libmoji.randOutfit(libmoji.getOutfits(libmoji.randBrand(libmoji.getBrands(gender[0]))));
+
+    let url = libmoji.buildPreviewUrl('body', 3, gender[1], style[1], 0, traits, outfit);
+
+
+    const tempPlayer1 = {
+      bitMojiURL: url,
+      bitMojiGender: gender,
+      bitMojiSyle: style,
+      bitMojiTraits: traits,
+      bitMojiOutfit: outfit,
+    }
+
+    gender = libmoji.genders[1]; // ["female", 2]
+    style = libmoji.styles[0]; // ["bitstrips", 1]
+    traits = libmoji.randTraits(libmoji.getTraits(gender[0], style[0]));
+    outfit = libmoji.randOutfit(libmoji.getOutfits(libmoji.randBrand(libmoji.getBrands(gender[0]))));
+
+    url = libmoji.buildPreviewUrl('body', 3, gender[1], style[1], 0, traits, outfit);
+
+    const tempPlayer2 = {
+      bitMojiURL: url,
+      bitMojiGender: gender,
+      bitMojiSyle: style,
+      bitMojiTraits: traits,
+      bitMojiOutfit: outfit,
+    }
+
+    this.setState({
+      player1 : tempPlayer1,
+      player2: tempPlayer2
+    })
+
+  }
+
   renderGame() {
-    const { gameStarted } = this.state;
+    const { gameStarted, player1, player2 } = this.state;
 
     if (gameStarted) {
       return (
         <div>
           <InteractionField />
-          <LeftColumn />
+          <LeftColumn
+            bitMoji={player1}
+          />
           <RightColumn
+            bitMoji={player2}
             settingsAction={this.handleGameStart}
           />
         </div>
