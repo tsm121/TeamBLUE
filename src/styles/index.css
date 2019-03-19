@@ -60,17 +60,17 @@ body {
   width: 80%;
 }
 .bit-moji-img-left {
-   position: fixed;
-   top: 0;
-   left: 0;
-   max-width: 65%;
-   max-height:65%;
- }
+  position: fixed;
+  bottom: 23%;
+  left: 0;
+  max-width: 25%;
+  max-height:100%;
+}
 
 .bit-moji-img-right {
   position: fixed;
-  top: 0;
+  bottom: 23%;
   right: 0;
-  max-width: 65%;
-  max-height:65%;
+  max-width: 25%;
+  max-height:100%;
 }
