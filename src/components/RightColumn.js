@@ -15,7 +15,7 @@ export default class RightColumn extends React.Component {
 
           <Col span={21}>
             <h1>Right Column</h1>
-            <BitMoji name={'bit-moji-img-right'} gender={gender} />
+            {/*<BitMoji name={'bit-moji-img-right'} gender={gender} />*/}
 
           </Col>
 
