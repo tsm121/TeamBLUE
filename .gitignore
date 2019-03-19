@@ -68,3 +68,6 @@ typings/
 
 #Package lock
 package-lock.json
+
+# iOS
+.DS_Store

@@ -44,3 +44,19 @@ body {
   height: 75%;
   background-color: rgba(255, 0, 0, 0.3);
 }
+
+.bit-moji-img-left {
+   position: fixed;
+   top: 0;
+   left: 0;
+   max-width: 65%;
+   max-height:65%;
+ }
+
+.bit-moji-img-right {
+  position: fixed;
+  top: 0;
+  right: 0;
+  max-width: 65%;
+  max-height:65%;
+}
