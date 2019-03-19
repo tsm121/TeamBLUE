@@ -12,53 +12,51 @@ export default class Scene extends React.Component {
     super(props);
     this.state = {
       gameStarted: true,
-      sceneBackgroundScr: "https://animatedanatomy.com/images/16-9-dummy-image6.jpg"
-    }
+      sceneBackgroundScr: 'https://animatedanatomy.com/images/16-9-dummy-image6.jpg',
+    };
 
-    this.handleGameStart = this.handleGameStart.bind(this)
-    this.renderGame = this.renderGame.bind(this)
+    this.handleGameStart = this.handleGameStart.bind(this);
+    this.renderGame = this.renderGame.bind(this);
   }
 
-  renderGame () {
-    const {gameStarted} = this.state
+  renderGame() {
+    const { gameStarted } = this.state;
 
     if (gameStarted) {
-
       return (
         <div>
-          <InteractionField/>
-          <LeftColumn/>
+          <InteractionField />
+          <LeftColumn />
           <RightColumn
             settingsAction={this.handleGameStart}
           />
         </div>
 
-      )
-    } else if (!gameStarted) {
+      );
+    } if (!gameStarted) {
       return (
 
         <Menu
           handleGameStarted={this.handleGameStart}
         />
 
-      )
-
+      );
     }
   }
 
-  handleGameStart () {
-    this.setState((state) => ({
-      gameStarted: !state.gameStarted
-    }))
+  handleGameStart() {
+    this.setState(state => ({
+      gameStarted: !state.gameStarted,
+    }));
   }
 
 
   render() {
-    const {sceneBackgroundScr} = this.state
+    const { sceneBackgroundScr } = this.state;
     return (
       <div
-        className={"scene"}
-        style={{backgroundImage: 'url(' + sceneBackgroundScr + ')'}}
+        className="scene"
+        style={{ backgroundImage: `url(${sceneBackgroundScr})` }}
       >
         <h1>Scene</h1>
 
