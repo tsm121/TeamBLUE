@@ -19,6 +19,7 @@ export default class Scene extends React.Component {
       sceneBackgroundScr: 'https://animatedanatomy.com/images/16-9-dummy-image6.jpg',
       sceneQuestion: "",
       sceneChoices: {},
+      currentScene: "scene_1",
       playerInteraction: false,
       player1: {},
       player2: {},
@@ -45,14 +46,15 @@ export default class Scene extends React.Component {
   }*/
 
   initGame () {
+    const {currentScene} = this.state
 
     this.generateInitBitEmoji()
 
     this.setState({
-      sceneBackgroundScr: scenes_lib.scenes["scene_1"]["backgroundURL"],
-      sceneChoices: scenes_lib.scenes["scene_1"]["choices"],
-      sceneQuestion: scenes_lib.scenes["scene_1"]["question"],
-      playerInteraction: scenes_lib.scenes["scene_1"]["playerInteraction"]
+      sceneBackgroundScr: scenes_lib.scenes[currentScene]["backgroundURL"],
+      sceneChoices: scenes_lib.scenes[currentScene]["choices"],
+      sceneQuestion: scenes_lib.scenes[currentScene]["question"],
+      playerInteraction: scenes_lib.scenes[currentScene]["playerInteraction"]
 
     })
   }
@@ -123,6 +125,7 @@ export default class Scene extends React.Component {
       sceneQuestion: newQuestion,
       sceneChoices: newChoices,
       playerInteraction: newPlayerInteraction,
+      currentScene: sceneName
     })
 
   }
@@ -137,10 +140,23 @@ export default class Scene extends React.Component {
 
   handleGamePaused () {
 
-    this.setState(state => ({
-      gamePaused: !state.gamePaused,
-      sceneBackgroundScr: 'https://animatedanatomy.com/images/16-9-dummy-image6.jpg'
-    }));
+    const {gamePaused, currentScene} = this.state
+
+    if (!gamePaused) {
+      this.setState(state => ({
+        gamePaused: !state.gamePaused,
+        sceneBackgroundScr: 'https://animatedanatomy.com/images/16-9-dummy-image6.jpg'
+      }));
+    }
+
+    else if (gamePaused) {
+      this.setState(state => ({
+        gamePaused: !state.gamePaused,
+        sceneBackgroundScr: scenes_lib.scenes[currentScene]["backgroundURL"]
+      }));
+    }
+
+
   }
 
   renderGame() {
