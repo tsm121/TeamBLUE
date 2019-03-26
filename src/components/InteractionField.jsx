@@ -1,7 +1,21 @@
 import React from 'react';
 import { Button, Row, Col, Card, Avatar } from 'antd';
 import Choices from './Choices';
+import Countdown from 'react-countdown-now';
+import Scene from './Scene';
+import App from '../pages/App';
+import Menu from './Menu';
 
+const renderer = ({seconds, completed }) => {
+  if (completed) {
+    // Render a complete state
+
+    return ("Time ran out");
+  } else {
+    // Render a countdown
+    return <span>{seconds}</span>;
+  }
+};
 
 export default class InteractionField extends React.Component {
   constructor(props) {
@@ -29,7 +43,7 @@ export default class InteractionField extends React.Component {
 
 
 
-            <Col span={24} className={"test"}>
+            <Col span={24} className={"interaction-container"}>
 
               <Row>
 
@@ -72,8 +86,12 @@ export default class InteractionField extends React.Component {
 
                 <Col span={8} className={"time-info"}>
 
-                  Time left:
-
+                  <h4 className={"counter"}>
+                  <Countdown
+                    date={Date.now() + 30000}
+                    renderer={renderer}
+                  />
+                  </h4>
                 </Col>
 
                 <Col span={8} className={"player-info-right"}>

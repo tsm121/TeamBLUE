@@ -20,7 +20,7 @@ Share with care
   }
 
   render() {
-    const { handleGameStarted } = this.props;
+    const { handleGameStarted, paused } = this.props;
 
     return (
       <Row type="flex" justify="space-around" align="middle" className="menu">
@@ -29,13 +29,13 @@ Share with care
           className="menu-content"
         >
           <MenuButton
-            label="Join Game"
+            label={paused? "Continue game" : "Join Game"}
             type="primary"
             action={handleGameStarted}
           />
 
           <MenuButton
-            label="Create Game"
+            label={paused? "Exit game" : "Create game"}
             type="default"
           />
 

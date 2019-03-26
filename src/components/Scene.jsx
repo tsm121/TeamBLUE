@@ -14,10 +14,12 @@ export default class Scene extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      gameStarted: true,
+      gameStarted: false,
+      gamePaused: false,
       sceneBackgroundScr: 'https://animatedanatomy.com/images/16-9-dummy-image6.jpg',
       sceneQuestion: "",
       sceneChoices: {},
+      playerInteraction: false,
       player1: {},
       player2: {},
     };
@@ -26,16 +28,32 @@ export default class Scene extends React.Component {
     this.renderGame = this.renderGame.bind(this);
     this.handleSceneChange = this.handleSceneChange.bind(this);
     this.prepareSceneChange = this.prepareSceneChange.bind(this);
+    this.handleGamePaused = this.handleGamePaused.bind(this)
 
   }
 
-  componentWillMount() {
+/*  componentWillMount() {
     this.generateInitBitEmoji()
 
     this.setState({
       sceneBackgroundScr: scenes_lib.scenes["scene_1"]["backgroundURL"],
       sceneChoices: scenes_lib.scenes["scene_1"]["choices"],
-      sceneQuestion: scenes_lib.scenes["scene_1"]["question"]
+      sceneQuestion: scenes_lib.scenes["scene_1"]["question"],
+      playerInteraction: scenes_lib.scenes["scene_1"]["playerInteraction"]
+
+    })
+  }*/
+
+  initGame () {
+
+    this.generateInitBitEmoji()
+
+    this.setState({
+      sceneBackgroundScr: scenes_lib.scenes["scene_1"]["backgroundURL"],
+      sceneChoices: scenes_lib.scenes["scene_1"]["choices"],
+      sceneQuestion: scenes_lib.scenes["scene_1"]["question"],
+      playerInteraction: scenes_lib.scenes["scene_1"]["playerInteraction"]
+
     })
   }
 
@@ -96,6 +114,7 @@ export default class Scene extends React.Component {
     let newBackground = scenes_lib.scenes[sceneName]["backgroundURL"]
     let newChoices = scenes_lib.scenes[sceneName]["choices"]
     let newQuestion = scenes_lib.scenes[sceneName]["question"]
+    let newPlayerInteraction = scenes_lib.scenes[sceneName]["playerInteraction"]
 
 
 
@@ -103,14 +122,42 @@ export default class Scene extends React.Component {
       sceneBackgroundScr: newBackground,
       sceneQuestion: newQuestion,
       sceneChoices: newChoices,
+      playerInteraction: newPlayerInteraction,
     })
 
   }
 
-  renderGame() {
-    const { gameStarted, player1, player2, sceneChoices, sceneQuestion } = this.state;
+  handleGameStart() {
+    this.initGame()
+    console.log("Starting game")
+    this.setState(state => ({
+      gameStarted: !state.gameStarted,
+    }));
+  }
 
-    if (gameStarted) {
+  handleGamePaused () {
+
+    this.setState(state => ({
+      gamePaused: !state.gamePaused,
+      sceneBackgroundScr: 'https://animatedanatomy.com/images/16-9-dummy-image6.jpg'
+    }));
+  }
+
+  renderGame() {
+    const { gameStarted, gamePaused, player1, player2, sceneChoices, sceneQuestion, playerInteraction } = this.state;
+
+    if(!gameStarted && !gamePaused) {
+      return (
+
+        <Menu
+          handleGameStarted={this.handleGameStart}
+          paused={gamePaused}
+        />
+
+      );
+    }
+
+    if (gameStarted && !gamePaused) {
       return (
         <div>
           <InteractionField
@@ -125,26 +172,22 @@ export default class Scene extends React.Component {
           />
           <RightColumn
             bitMoji={player2}
-            settingsAction={this.handleGameStart}
+            settingsAction={this.handleGamePaused}
+            hideBitMoji={playerInteraction}
           />
         </div>
 
       );
-    } if (!gameStarted) {
+    } if (gamePaused && gameStarted) {
       return (
 
         <Menu
-          handleGameStarted={this.handleGameStart}
+          handleGameStarted={this.handleGamePaused}
+          paused={gamePaused}
         />
 
       );
     }
-  }
-
-  handleGameStart() {
-    this.setState(state => ({
-      gameStarted: !state.gameStarted,
-    }));
   }
 
 
