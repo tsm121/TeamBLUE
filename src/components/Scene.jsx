@@ -47,6 +47,7 @@ export default class Scene extends React.Component {
     let outfit = libmoji.randOutfit(libmoji.getOutfits(libmoji.randBrand(libmoji.getBrands(gender[0]))));
 
     let url = libmoji.buildPreviewUrl('body', 3, gender[1], style[1], 0, traits, outfit);
+    let head = libmoji.buildPreviewUrl('head', 3, gender[1], style[1], 0, traits, outfit);
 
     //Generate player 1
     const tempPlayer1 = {
@@ -55,6 +56,7 @@ export default class Scene extends React.Component {
       bitMojiSyle: style,
       bitMojiTraits: traits,
       bitMojiOutfit: outfit,
+      bitMojiHead: head,
     }
 
     gender = libmoji.genders[1]; // ["female", 2]
@@ -63,6 +65,7 @@ export default class Scene extends React.Component {
     outfit = libmoji.randOutfit(libmoji.getOutfits(libmoji.randBrand(libmoji.getBrands(gender[0]))));
 
     url = libmoji.buildPreviewUrl('body', 3, gender[1], style[1], 0, traits, outfit);
+    head = libmoji.buildPreviewUrl('head', 3, gender[1], style[1], 0, traits, outfit);
 
     // Generate player 2
     const tempPlayer2 = {
@@ -71,6 +74,7 @@ export default class Scene extends React.Component {
       bitMojiSyle: style,
       bitMojiTraits: traits,
       bitMojiOutfit: outfit,
+      bitMojiHead: head,
     }
 
     this.setState({
@@ -82,7 +86,7 @@ export default class Scene extends React.Component {
 
   handleSceneChange (sceneName) {
 
-    console.log("Change scene to " + sceneName)
+    console.log("Change scene to " + "'" + sceneName + "'")
 
     this.prepareSceneChange(sceneName)
   }
@@ -113,6 +117,8 @@ export default class Scene extends React.Component {
             handleSceneChange={this.handleSceneChange}
             choices={sceneChoices}
             question={sceneQuestion}
+            player1Avatar={player1.bitMojiHead}
+            player2Avatar={player2.bitMojiHead}
           />
           <LeftColumn
             bitMoji={player1}

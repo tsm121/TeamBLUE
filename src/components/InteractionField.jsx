@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Row, Col, Card } from 'antd';
+import { Button, Row, Col, Card, Avatar } from 'antd';
 import Choices from './Choices';
 
 
@@ -19,7 +19,7 @@ export default class InteractionField extends React.Component {
 
   render() {
 
-    const {choices, handleSceneChange, question} = this.props
+    const {choices, handleSceneChange, question, player1Avatar, player2Avatar} = this.props
 
     return (
       <div className="interaction-field">
@@ -29,7 +29,7 @@ export default class InteractionField extends React.Component {
 
 
 
-            <Col span={24}>
+            <Col span={24} className={"test"}>
 
               <Row>
 
@@ -58,8 +58,28 @@ export default class InteractionField extends React.Component {
                   handleSceneChange={handleSceneChange}
                 />
               </Row>
+
+
             </Col>
 
+              </Row>
+              <Row className={"player-info-container"}>
+
+                <Col span={8} className={"player-info-left"}>
+                  <Avatar src={player1Avatar} />
+                  <h4 className={"player-name-left"}>Player 1</h4>
+                </Col>
+
+                <Col span={8} className={"time-info"}>
+
+                  Time left:
+
+                </Col>
+
+                <Col span={8} className={"player-info-right"}>
+                  <h4 className={"player-name-right"}>Player 2</h4>
+                  <Avatar src={player2Avatar} />
+                </Col>
               </Row>
             </Col>
 
