@@ -13,7 +13,6 @@ export default class RightColumn extends React.Component {
         <Row>
 
           <Col span={21}>
-            <h1>Right Column</h1>
             <BitMoji name="bit-moji-img-right" player={bitMoji} user={2} />
 
           </Col>

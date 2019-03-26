@@ -13,35 +13,53 @@ export default class InteractionField extends React.Component {
 
 
   handleNextSceneButton () {
-    const {nextScene} = this.props
-
-    console.log("NextScene btn pressed")
-
-    nextScene()
+    const {handleSceneChange} = this.props
+    handleSceneChange()
   }
 
   render() {
 
+    const {choices, handleSceneChange, question} = this.props
+
     return (
       <div className="interaction-field">
-        <Row className={"interaction-row"} type="flex" justify="center" align="middle" >
+        <Row span={24} className={"interaction-row"} type="flex" justify="center" align="middle" >
 
           <Card className={"interaction-card"}>
 
-            <Col span={8} style={{backgroundColor:"red"}}>
+
+
+            <Col span={24}>
+
+              <Row>
+
+                <Col span={8} className={"interaction-top-col"}>
+                  Question
+                </Col>
+
+                <Col span={16} className={"interaction-top-col"}>
+                  Choices
+                </Col>
+
+              </Row>
+
+              <Row>
+
+            <Col span={8} className="interaction-text">
               <Row type="flex" justify="center" align="middle">
-              <p>This is a text, this is a text, this is a text, this is a text, this is a text, </p>
+              <p>{question} </p>
               </Row>
             </Col>
 
-            <Col span={16} style={{backgroundColor:"blue"}}>
+            <Col span={16}>
               <Row type="flex" justify="center" align="middle">
-                <Choices/>
-              <Button
-                onClick={this.handleNextSceneButton}
-              >
-                Next Scene
-              </Button>
+                <Choices
+                  choices={choices}
+                  handleSceneChange={handleSceneChange}
+                />
+              </Row>
+            </Col>
+
               </Row>
             </Col>
 

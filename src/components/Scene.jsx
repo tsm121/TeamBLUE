@@ -16,18 +16,27 @@ export default class Scene extends React.Component {
     this.state = {
       gameStarted: true,
       sceneBackgroundScr: 'https://animatedanatomy.com/images/16-9-dummy-image6.jpg',
+      sceneQuestion: "",
+      sceneChoices: {},
       player1: {},
       player2: {},
     };
 
     this.handleGameStart = this.handleGameStart.bind(this);
     this.renderGame = this.renderGame.bind(this);
-    this.nextScene = this.nextScene.bind(this);
+    this.handleSceneChange = this.handleSceneChange.bind(this);
+    this.prepareSceneChange = this.prepareSceneChange.bind(this);
 
   }
 
   componentWillMount() {
     this.generateInitBitEmoji()
+
+    this.setState({
+      sceneBackgroundScr: scenes_lib.scenes["scene_1"]["backgroundURL"],
+      sceneChoices: scenes_lib.scenes["scene_1"]["choices"],
+      sceneQuestion: scenes_lib.scenes["scene_1"]["question"]
+    })
   }
 
   generateInitBitEmoji() {
@@ -39,7 +48,7 @@ export default class Scene extends React.Component {
 
     let url = libmoji.buildPreviewUrl('body', 3, gender[1], style[1], 0, traits, outfit);
 
-
+    //Generate player 1
     const tempPlayer1 = {
       bitMojiURL: url,
       bitMojiGender: gender,
@@ -55,6 +64,7 @@ export default class Scene extends React.Component {
 
     url = libmoji.buildPreviewUrl('body', 3, gender[1], style[1], 0, traits, outfit);
 
+    // Generate player 2
     const tempPlayer2 = {
       bitMojiURL: url,
       bitMojiGender: gender,
@@ -70,26 +80,39 @@ export default class Scene extends React.Component {
 
   }
 
-  nextScene () {
-    console.log("Next scene func")
-    console.log(scenes_lib.scenes["scene_1"]["backgroundURL"])
+  handleSceneChange (sceneName) {
 
-    const newBackground = scenes_lib.scenes["scene_1"]["backgroundURL"]
+    console.log("Change scene to " + sceneName)
+
+    this.prepareSceneChange(sceneName)
+  }
+
+  prepareSceneChange (sceneName) {
+
+    let newBackground = scenes_lib.scenes[sceneName]["backgroundURL"]
+    let newChoices = scenes_lib.scenes[sceneName]["choices"]
+    let newQuestion = scenes_lib.scenes[sceneName]["question"]
+
+
 
     this.setState({
-      sceneBackgroundScr: newBackground
+      sceneBackgroundScr: newBackground,
+      sceneQuestion: newQuestion,
+      sceneChoices: newChoices,
     })
 
   }
 
   renderGame() {
-    const { gameStarted, player1, player2 } = this.state;
+    const { gameStarted, player1, player2, sceneChoices, sceneQuestion } = this.state;
 
     if (gameStarted) {
       return (
         <div>
           <InteractionField
-            nextScene={this.nextScene}
+            handleSceneChange={this.handleSceneChange}
+            choices={sceneChoices}
+            question={sceneQuestion}
           />
           <LeftColumn
             bitMoji={player1}
@@ -126,8 +149,6 @@ export default class Scene extends React.Component {
         className="scene"
         style={{ backgroundImage: `url(${sceneBackgroundScr})` }}
       >
-        <h1>Scene</h1>
-
         {this.renderGame()}
 
       </div>

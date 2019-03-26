@@ -4,33 +4,48 @@ import { Button, Row, Col, Card } from 'antd';
 
 export default class Choices extends React.Component {
 
+  handleButtonPress (scene) {
+    const {handleSceneChange} = this.props
+    handleSceneChange(scene)
+  }
+
+  generateButtons () {
+    const {choices} = this.props
+
+    return ( [Object.entries(choices).map(([choiceNum, value]) => {
+      return(
+        <Button
+          type="primary"
+          className={"choice-button"}
+          onClick={(e) => this.handleButtonPress(value["scene"])}
+          keu={choiceNum}
+        >
+          {value["text"]}
+        </Button>
+      )
+    })])
+  }
+
   render() {
+    let buttons = this.generateButtons()
 
     return (
       <Row>
         <Col>
 
-          <Button>
-            Choice 1
-          </Button>
+          {buttons[0][0]}
 
-          <Button>
-            Choice 2
-          </Button>
+          {buttons[0][1]}
 
         </Col>
 
         <Col>
 
-          <Button>
-            Choice 3
-          </Button>
+          {buttons[0][2]}
 
-          <Button>
-            Choice 4
-          </Button>
-
+          {buttons[0][3]}
         </Col>
+
       </Row>
     );
   }

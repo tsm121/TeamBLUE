@@ -3,7 +3,6 @@ body {
   padding: 0;
   font-family: sans-serif;
   text-decoration: none;
-  background-color: #FFFF00;
 }
 
 .scene {
@@ -12,7 +11,6 @@ body {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color:red;
   background-repeat: no-repeat;
   background-size:cover;
   overflow: hidden;
@@ -24,7 +22,6 @@ body {
   left: 0;
   width: 100%;
   height: 25%;
-  background-color: rgba(0, 0, 255, 0.3);
 }
 
 .interaction-row {
@@ -46,7 +43,6 @@ body {
   left: 0;
   width: 25%;
   height: 75%;
-  background-color: rgba(0, 255, 0, 0.3);
 }
 
 .right-column {
@@ -55,12 +51,17 @@ body {
   right: 0;
   width: 25%;
   height: 75%;
-  background-color: rgba(255, 0, 0, 0.3);
 }
 
 .ant-card {
   border-radius: 10px !important;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.interaction-field .ant-card {
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 .menu-content {
@@ -71,6 +72,10 @@ body {
 .menu-button {
   margin-bottom: 1em;
   width: 80%;
+}
+
+.menu {
+  height: 100%;
 }
 .bit-moji-img-left {
   position: fixed;
@@ -86,4 +91,37 @@ body {
   right: 0;
   max-width: 25%;
   max-height:100%;
+}
+
+.interaction-text {
+  height: fit-content;
+  border-right: blue;
+  border-right-width: 2px;
+}
+
+.interaction-text p {
+  font-size: 1.5em;
+
+}
+
+.interaction-field .ant-card-body {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-top:0 !important;
+  padding-bottom: 0 !important;
+}
+
+.choice-button {
+  margin: 0.4em;
+}
+
+.interaction-top-col {
+  display: flex !important;
+  justify-content: center;
+  border-bottom: #BBB 1px solid;
+  padding-bottom: 0.2em;
+  margin-bottom: 1em;
+  font-size: 1.3em;
+  color: #BBB
 }
