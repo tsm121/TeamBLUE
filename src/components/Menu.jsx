@@ -6,36 +6,24 @@ import MenuButton from './MenuButton';
 
 
 export default class Menu extends React.Component {
-  generateTitle() {
-    return (
-      <Row type="flex" justify="center" align="middle">
-        <h1>
-          <Icon type="smile" />
-          {' '}
-Share with care
-        </h1>
 
-      </Row>
-    );
-  }
 
   render() {
-    const { handleGameStarted } = this.props;
+    const { handleGameStarted, paused } = this.props;
 
     return (
       <Row type="flex" justify="space-around" align="middle" className="menu">
         <Card
-          title={this.generateTitle()}
           className="menu-content"
         >
           <MenuButton
-            label="Join Game"
+            label={paused? "Continue game" : "Join Game"}
             type="primary"
             action={handleGameStarted}
           />
 
           <MenuButton
-            label="Create Game"
+            label={paused? "Exit game" : "Create game"}
             type="default"
           />
 

@@ -7,23 +7,58 @@ import Menu from './Menu';
 import SettingsButton from './SettingsButton';
 import libmoji from 'libmoji';
 
+import scenes_lib from './data/scenes.json'
+import Header from './Header';
+import Footer from './Footer';
+
 
 export default class Scene extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      gameStarted: true,
-      sceneBackgroundScr: 'https://animatedanatomy.com/images/16-9-dummy-image6.jpg',
+      gameStarted: false,
+      gamePaused: false,
+      sceneBackgroundScr: 'https://d2wkqk610zk1ag.cloudfront.net/items/1x3u0g0u2f2a450n2x0n/ShareWithCareBG.jpg?X-CloudApp-Visitor-Id=19240',
+      sceneQuestion: "",
+      sceneChoices: {},
+      currentScene: "scene_1",
+      playerInteraction: false,
       player1: {},
       player2: {},
     };
 
     this.handleGameStart = this.handleGameStart.bind(this);
     this.renderGame = this.renderGame.bind(this);
+    this.handleSceneChange = this.handleSceneChange.bind(this);
+    this.prepareSceneChange = this.prepareSceneChange.bind(this);
+    this.handleGamePaused = this.handleGamePaused.bind(this)
+
   }
 
-  componentWillMount() {
+  /*  componentWillMount() {
+      this.generateInitBitEmoji()
+
+      this.setState({
+        sceneBackgroundScr: scenes_lib.scenes["scene_1"]["backgroundURL"],
+        sceneChoices: scenes_lib.scenes["scene_1"]["choices"],
+        sceneQuestion: scenes_lib.scenes["scene_1"]["question"],
+        playerInteraction: scenes_lib.scenes["scene_1"]["playerInteraction"]
+
+      })
+    }*/
+
+  initGame () {
+    const {currentScene} = this.state
+
     this.generateInitBitEmoji()
+
+    this.setState({
+      sceneBackgroundScr: scenes_lib.scenes[currentScene]["backgroundURL"],
+      sceneChoices: scenes_lib.scenes[currentScene]["choices"],
+      sceneQuestion: scenes_lib.scenes[currentScene]["question"],
+      playerInteraction: scenes_lib.scenes[currentScene]["playerInteraction"]
+
+    })
   }
 
   generateInitBitEmoji() {
@@ -34,14 +69,16 @@ export default class Scene extends React.Component {
     let outfit = libmoji.randOutfit(libmoji.getOutfits(libmoji.randBrand(libmoji.getBrands(gender[0]))));
 
     let url = libmoji.buildPreviewUrl('body', 3, gender[1], style[1], 0, traits, outfit);
+    let head = libmoji.buildPreviewUrl('head', 3, gender[1], style[1], 0, traits, outfit);
 
-
+    //Generate player 1
     const tempPlayer1 = {
       bitMojiURL: url,
       bitMojiGender: gender,
       bitMojiSyle: style,
       bitMojiTraits: traits,
       bitMojiOutfit: outfit,
+      bitMojiHead: head,
     }
 
     gender = libmoji.genders[1]; // ["female", 2]
@@ -50,13 +87,16 @@ export default class Scene extends React.Component {
     outfit = libmoji.randOutfit(libmoji.getOutfits(libmoji.randBrand(libmoji.getBrands(gender[0]))));
 
     url = libmoji.buildPreviewUrl('body', 3, gender[1], style[1], 0, traits, outfit);
+    head = libmoji.buildPreviewUrl('head', 3, gender[1], style[1], 0, traits, outfit);
 
+    // Generate player 2
     const tempPlayer2 = {
       bitMojiURL: url,
       bitMojiGender: gender,
       bitMojiSyle: style,
       bitMojiTraits: traits,
       bitMojiOutfit: outfit,
+      bitMojiHead: head,
     }
 
     this.setState({
@@ -66,51 +106,122 @@ export default class Scene extends React.Component {
 
   }
 
-  renderGame() {
-    const { gameStarted, player1, player2 } = this.state;
+  handleSceneChange (sceneName) {
 
-    if (gameStarted) {
+    console.log("Change scene to " + "'" + sceneName + "'")
+
+    this.prepareSceneChange(sceneName)
+  }
+
+  prepareSceneChange (sceneName) {
+
+    let newBackground = scenes_lib.scenes[sceneName]["backgroundURL"]
+    let newChoices = scenes_lib.scenes[sceneName]["choices"]
+    let newQuestion = scenes_lib.scenes[sceneName]["question"]
+    let newPlayerInteraction = scenes_lib.scenes[sceneName]["playerInteraction"]
+
+
+
+    this.setState({
+      sceneBackgroundScr: newBackground,
+      sceneQuestion: newQuestion,
+      sceneChoices: newChoices,
+      playerInteraction: newPlayerInteraction,
+      currentScene: sceneName
+    })
+
+  }
+
+  handleGameStart() {
+    this.initGame()
+    console.log("Starting game")
+    this.setState(state => ({
+      gameStarted: !state.gameStarted,
+    }));
+  }
+
+  handleGamePaused () {
+
+    const {gamePaused, currentScene} = this.state
+
+    if (!gamePaused) {
+      this.setState(state => ({
+        gamePaused: !state.gamePaused,
+        sceneBackgroundScr: 'https://d2wkqk610zk1ag.cloudfront.net/items/1x3u0g0u2f2a450n2x0n/ShareWithCareBG.jpg?X-CloudApp-Visitor-Id=19240'
+      }));
+    }
+
+    else if (gamePaused) {
+      this.setState(state => ({
+        gamePaused: !state.gamePaused,
+        sceneBackgroundScr: scenes_lib.scenes[currentScene]["backgroundURL"]
+      }));
+    }
+
+
+  }
+
+  renderGame() {
+    const { gameStarted, gamePaused, player1, player2, sceneChoices, sceneQuestion, playerInteraction } = this.state;
+
+    if(!gameStarted && !gamePaused) {
+      return (
+
+        <Menu
+          handleGameStarted={this.handleGameStart}
+          paused={gamePaused}
+        />
+
+      );
+    }
+
+    if (gameStarted && !gamePaused) {
       return (
         <div>
-          <InteractionField />
+          <InteractionField
+            handleSceneChange={this.handleSceneChange}
+            choices={sceneChoices}
+            question={sceneQuestion}
+            player1Avatar={player1.bitMojiHead}
+            player2Avatar={player2.bitMojiHead}
+          />
           <LeftColumn
             bitMoji={player1}
           />
           <RightColumn
             bitMoji={player2}
-            settingsAction={this.handleGameStart}
+            settingsAction={this.handleGamePaused}
+            hideBitMoji={playerInteraction}
           />
         </div>
 
       );
-    } if (!gameStarted) {
+    } if (gamePaused && gameStarted) {
       return (
 
         <Menu
-          handleGameStarted={this.handleGameStart}
+          handleGameStarted={this.handleGamePaused}
+          paused={gamePaused}
         />
 
       );
     }
   }
 
-  handleGameStart() {
-    this.setState(state => ({
-      gameStarted: !state.gameStarted,
-    }));
-  }
-
 
   render() {
-    const { sceneBackgroundScr } = this.state;
+    const { sceneBackgroundScr, gameStarted, gamePaused } = this.state;
     return (
       <div
         className="scene"
         style={{ backgroundImage: `url(${sceneBackgroundScr})` }}
       >
-        <h1>Scene</h1>
+
+        {!gameStarted || (gameStarted && gamePaused)?  <Header/> : ""}
 
         {this.renderGame()}
+
+        {!gameStarted || (gameStarted && gamePaused)?  <Footer/> : ""}
 
       </div>
     );

@@ -1,9 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family:sans-serif !important;
   text-decoration: none;
-  background-color: #FFFF00;
 }
 
 .scene {
@@ -12,7 +11,6 @@ body {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color:red;
   background-repeat: no-repeat;
   background-size:cover;
   overflow: hidden;
@@ -23,17 +21,28 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 25%;
-  background-color: rgba(0, 0, 255, 0.3);
+  height: 30%;
 }
+
+.interaction-row {
+  width: 100%;
+  height: 100%;
+  min-height: 25%;
+}
+
+.interaction-card {
+  padding: 1em;
+  min-height: 90%;
+  min-width: 95%;
+}
+
 
 .left-column {
   position: fixed;
   top: 0;
   left: 0;
   width: 25%;
-  height: 75%;
-  background-color: rgba(0, 255, 0, 0.3);
+  height: 70%;
 }
 
 .right-column {
@@ -41,8 +50,7 @@ body {
   top: 0;
   right: 0;
   width: 25%;
-  height: 75%;
-  background-color: rgba(255, 0, 0, 0.3);
+  height: 70%;
 }
 
 .ant-card {
@@ -50,18 +58,28 @@ body {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
+.interaction-field .ant-card {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
 .menu-content {
-  width: 40%;
+  width: 25%;
   padding: 1em;
 }
 
 .menu-button {
-  margin-bottom: 1em;
+  margin: 0.8em 0 0.8em 0;
   width: 80%;
+}
+
+.menu {
+  height: 60%;
 }
 .bit-moji-img-left {
   position: fixed;
-  bottom: 23%;
+  bottom: 27%;
   left: 0;
   max-width: 25%;
   max-height:100%;
@@ -69,8 +87,166 @@ body {
 
 .bit-moji-img-right {
   position: fixed;
-  bottom: 23%;
+  bottom: 27%;
   right: 0;
   max-width: 25%;
   max-height:100%;
 }
+
+.interaction-text {
+  height: fit-content;
+  border-right: blue;
+  border-right-width: 2px;
+}
+
+.interaction-text p {
+  font-size: 1.5em;
+
+}
+
+.interaction-field .ant-card-body {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 !important;
+}
+
+.choice-button {
+  margin: 0.4em;
+}
+
+.interaction-top-col {
+  display: flex !important;
+  justify-content: center;
+  border-bottom: #BBB 1px solid;
+  padding-bottom: 0.2em;
+  margin-bottom: 1em;
+  font-size: 1.3em;
+  color: #BBB
+}
+
+.player-info-container {
+  display: flex !important;
+}
+
+.player-info-right {
+  display: flex !important;
+  justify-content: flex-end;
+  padding-right: 2em !important;
+
+}
+
+.player-info-left {
+  display: flex !important;
+  justify-content: flex-start;
+  padding-left: 2em !important;
+}
+
+.time-info {
+  display: flex !important;
+  justify-content: center;
+}
+
+.ant-avatar > img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 24px !important;
+  margin: auto !important;
+}
+
+.ant-avatar {
+  background: #DDD !important;
+  border: solid #198fff 1px;
+}
+
+.player-name-right {
+  display: flex;
+  align-items: center;
+  padding-right: 5px;
+}
+
+.player-name-left {
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+}
+
+h4 {
+  margin: 0 !important;
+}
+
+.interaction-container {
+  display: flex !important;
+  justify-content: space-between !important;
+  height: 100%;
+  padding-top: 1em;
+  flex-direction: column;
+  padding-bottom: 1em;
+}
+
+.ant-card .counter {
+  color:#FF5964;
+  font-size: 1.2em;
+  padding-left:5px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  background-color: transparent;
+  width:100%;
+  margin-top: 0.5em;
+}
+
+.header-center > h1 {
+  font-family: 'Josefin Sans', sans-serif;
+  color: white;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 2.5em;
+}
+
+.header-left {
+  left: 0;
+  position: absolute;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.ant-btn {
+  border-radius: 15px !important
+}
+
+.ant-btn:hover {
+  background-color:#FF5964 !important;
+  border-color:white !important;
+  color:white !important;
+}
+
+.header .ant-btn {
+  background-color: #FF5964;
+  border: 0;
+  color:white;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left:0;
+  background-color: white;
+  width:100%;
+  height:3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer > h4 {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #555;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1em;
+}
+

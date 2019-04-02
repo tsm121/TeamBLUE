@@ -6,19 +6,22 @@ import BitMoji from './BitMoji';
 
 export default class RightColumn extends React.Component {
   render() {
-    const { settingsAction, bitMoji } = this.props;
+    const { settingsAction, bitMoji, hideBitMoji } = this.props;
     const gender = 0;
     return (
       <div className="right-column">
         <Row>
 
           <Col span={21}>
-            <h1>Right Column</h1>
+            <div style={hideBitMoji ? {display:"none"} : {display:"unset"}}>
             <BitMoji name="bit-moji-img-right" player={bitMoji} user={2} />
+            </div>
 
           </Col>
 
-          <Col span={3}>
+          <Col span={3}
+               style={{marginTop:"0.5em"}}
+          >
             <SettingsButton
               action={settingsAction}
             />

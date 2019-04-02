@@ -1,0 +1,28 @@
+{
+  "scenes": {
+    "scene_1": {
+      "backgroundURL": "https://bossdesigncenter.com/wp-content/uploads/2018/02/kitchen-remodeling-trends-2.jpg",
+      "question": "This is the question text",
+      "playerInteraction": true,
+      "choices": {
+        "choice1": {"text": "Text for choice 1", "scene": "scene_2"},
+        "choice2": {"text": "Text for choice 2", "scene": "scene_3"},
+        "choice3": {"text": "Text for choice 3", "scene": "scene_4"},
+        "choice4": {"text": "Text for choice 4", "scene": "scene_5"}
+      }
+    },
+
+    "scene_2": {
+      "backgroundURL": "https://www.readingviaduct.org/wp-content/uploads/2018/06/Schaefer-Park-Playground-1024x675.jpg",
+      "question": "This is a NEW question text",
+      "playerInteraction": false,
+      "choices": {
+        "choice1": {"text": "New Choice1", "scene": "scene_1"},
+        "choice2": {"text": "New Choice2", "scene": "scene_3"},
+        "choice3": {"text": "New Choice3", "scene": "scene_4"},
+        "choice4": {"text": "New Choice4", "scene": "scene_5"}
+      }
+    }
+
+  }
+}
