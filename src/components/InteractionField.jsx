@@ -47,11 +47,11 @@ export default class InteractionField extends React.Component {
 
               <Row>
 
-                <Col span={8} className={"interaction-top-col"}>
+                <Col span={12} className={"interaction-top-col"}>
                   Question
                 </Col>
 
-                <Col span={16} className={"interaction-top-col"}>
+                <Col span={12} className={"interaction-top-col"}>
                   Choices
                 </Col>
 
@@ -59,13 +59,13 @@ export default class InteractionField extends React.Component {
 
               <Row>
 
-            <Col span={8} className="interaction-text">
+            <Col span={12} className="interaction-text">
               <Row type="flex" justify="center" align="middle">
               <p>{question} </p>
               </Row>
             </Col>
 
-            <Col span={16}>
+            <Col span={12}>
               <Row type="flex" justify="center" align="middle">
                 <Choices
                   choices={choices}

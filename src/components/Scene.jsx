@@ -8,6 +8,8 @@ import SettingsButton from './SettingsButton';
 import libmoji from 'libmoji';
 
 import scenes_lib from './data/scenes.json'
+import Header from './Header';
+import Footer from './Footer';
 
 
 export default class Scene extends React.Component {
@@ -16,7 +18,7 @@ export default class Scene extends React.Component {
     this.state = {
       gameStarted: false,
       gamePaused: false,
-      sceneBackgroundScr: 'https://animatedanatomy.com/images/16-9-dummy-image6.jpg',
+      sceneBackgroundScr: 'https://d2wkqk610zk1ag.cloudfront.net/items/1x3u0g0u2f2a450n2x0n/ShareWithCareBG.jpg?X-CloudApp-Visitor-Id=19240',
       sceneQuestion: "",
       sceneChoices: {},
       currentScene: "scene_1",
@@ -33,17 +35,17 @@ export default class Scene extends React.Component {
 
   }
 
-/*  componentWillMount() {
-    this.generateInitBitEmoji()
+  /*  componentWillMount() {
+      this.generateInitBitEmoji()
 
-    this.setState({
-      sceneBackgroundScr: scenes_lib.scenes["scene_1"]["backgroundURL"],
-      sceneChoices: scenes_lib.scenes["scene_1"]["choices"],
-      sceneQuestion: scenes_lib.scenes["scene_1"]["question"],
-      playerInteraction: scenes_lib.scenes["scene_1"]["playerInteraction"]
+      this.setState({
+        sceneBackgroundScr: scenes_lib.scenes["scene_1"]["backgroundURL"],
+        sceneChoices: scenes_lib.scenes["scene_1"]["choices"],
+        sceneQuestion: scenes_lib.scenes["scene_1"]["question"],
+        playerInteraction: scenes_lib.scenes["scene_1"]["playerInteraction"]
 
-    })
-  }*/
+      })
+    }*/
 
   initGame () {
     const {currentScene} = this.state
@@ -145,7 +147,7 @@ export default class Scene extends React.Component {
     if (!gamePaused) {
       this.setState(state => ({
         gamePaused: !state.gamePaused,
-        sceneBackgroundScr: 'https://animatedanatomy.com/images/16-9-dummy-image6.jpg'
+        sceneBackgroundScr: 'https://d2wkqk610zk1ag.cloudfront.net/items/1x3u0g0u2f2a450n2x0n/ShareWithCareBG.jpg?X-CloudApp-Visitor-Id=19240'
       }));
     }
 
@@ -208,13 +210,18 @@ export default class Scene extends React.Component {
 
 
   render() {
-    const { sceneBackgroundScr } = this.state;
+    const { sceneBackgroundScr, gameStarted, gamePaused } = this.state;
     return (
       <div
         className="scene"
         style={{ backgroundImage: `url(${sceneBackgroundScr})` }}
       >
+
+        {!gameStarted || (gameStarted && gamePaused)?  <Header/> : ""}
+
         {this.renderGame()}
+
+        {!gameStarted || (gameStarted && gamePaused)?  <Footer/> : ""}
 
       </div>
     );

@@ -19,7 +19,9 @@ export default class RightColumn extends React.Component {
 
           </Col>
 
-          <Col span={3}>
+          <Col span={3}
+               style={{marginTop:"0.5em"}}
+          >
             <SettingsButton
               action={settingsAction}
             />
