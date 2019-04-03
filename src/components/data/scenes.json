@@ -27,7 +27,9 @@
       "backgroundURL": "http://d2um9prq37tvxi.cloudfront.net/9bdd60530eab9ead1e406ef0b7c72b4d.png",
       "question": "You managed to get out of bed and go to the airport. Luckily Jane also got up so you didn't have to struggle to get her out of bed. What do you want to do while waiting for the plane?",
       "playerInteraction": true,
+      "socialMediaInteraction": false,
       "choices": {
+<<<<<<< HEAD
         "choice1": {
           "text": "Post a picture of you and Jane to Instantgram as you enter the plane",
           "scene": "airplane01"
@@ -412,6 +414,37 @@
           "text": "Start Over",
           "scene": "atHome"
         }
+=======
+        "choice1": {"text": "Text for choice 1", "scene": "scene_2"},
+        "choice2": {"text": "Text for choice 2", "scene": "scene_2"},
+        "choice3": {"text": "Text for choice 3", "scene": "scene_2"},
+        "choice4": {"text": "Text for choice 4", "scene": "scene_2"}
+      }
+    },
+
+    "scene_2": {
+      "backgroundURL": "https://www.readingviaduct.org/wp-content/uploads/2018/06/Schaefer-Park-Playground-1024x675.jpg",
+      "question": "This is a NEW question text",
+      "playerInteraction": false,
+      "socialMediaInteraction": true,
+      "choices": {
+        "choice1": {"text": "New Choice1", "scene": "scene_3"},
+        "choice2": {"text": "New Choice2", "scene": "scene_3"},
+        "choice3": {"text": "New Choice3", "scene": "scene_3"},
+        "choice4": {"text": "New Choice4", "scene": "scene_3"}
+      }
+    },
+    "scene_3": {
+      "backgroundURL": "https://www.readingviaduct.org/wp-content/uploads/2018/06/Schaefer-Park-Playground-1024x675.jpg",
+      "question": "This is a NEW NEW question text",
+      "playerInteraction": false,
+      "socialMediaInteraction": false,
+      "choices": {
+        "choice1": {"text": "New new Choice1", "scene": "scene_1"},
+        "choice2": {"text": "New new Choice2", "scene": "scene_1"},
+        "choice3": {"text": "New new Choice3", "scene": "scene_1"},
+        "choice4": {"text": "New new Choice4", "scene": "scene_1"}
+>>>>>>> b505cf01759adf0ad20976fd31524ee546403344
       }
     }
   }

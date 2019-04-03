@@ -18,11 +18,12 @@ export default class Scene extends React.Component {
     this.state = {
       gameStarted: false,
       gamePaused: false,
-      sceneBackgroundScr: 'https://d2wkqk610zk1ag.cloudfront.net/items/1x3u0g0u2f2a450n2x0n/ShareWithCareBG.jpg?X-CloudApp-Visitor-Id=19240',
+      sceneBackgroundScr: 'https://d2wkqk610zk1ag.cloudfront.net/items/010o0d1b390L251l0d39/ShareWithCareBG.jpg?X-CloudApp-Visitor-Id=19240',
       sceneQuestion: "",
       sceneChoices: {},
-      currentScene: "atHome",
+      currentScene: "scene_1",
       playerInteraction: false,
+      socialMediaInteraction: false,
       player1: {},
       player2: {},
     };
@@ -56,7 +57,8 @@ export default class Scene extends React.Component {
       sceneBackgroundScr: scenes_lib.scenes[currentScene]["backgroundURL"],
       sceneChoices: scenes_lib.scenes[currentScene]["choices"],
       sceneQuestion: scenes_lib.scenes[currentScene]["question"],
-      playerInteraction: scenes_lib.scenes[currentScene]["playerInteraction"]
+      playerInteraction: scenes_lib.scenes[currentScene]["playerInteraction"],
+      socialMediaInteraction: scenes_lib.scenes[currentScene]["socialMediaInteraction"]
 
     })
   }
@@ -115,21 +117,34 @@ export default class Scene extends React.Component {
 
   prepareSceneChange (sceneName) {
 
+    const {socialMediaInteraction} = this.state
+
+
     let newBackground = scenes_lib.scenes[sceneName]["backgroundURL"]
     let newChoices = scenes_lib.scenes[sceneName]["choices"]
     let newQuestion = scenes_lib.scenes[sceneName]["question"]
     let newPlayerInteraction = scenes_lib.scenes[sceneName]["playerInteraction"]
 
-
+    if (!socialMediaInteraction) {
+      let newSocialMediaInteraction = scenes_lib.scenes[sceneName]["socialMediaInteraction"]
+      this.setState({
+        sceneBackgroundScr: newBackground,
+        sceneQuestion: newQuestion,
+        sceneChoices: newChoices,
+        playerInteraction: newPlayerInteraction,
+        socialMediaInteraction: newSocialMediaInteraction,
+        currentScene: sceneName,
+      })
+    } else {
 
     this.setState({
       sceneBackgroundScr: newBackground,
       sceneQuestion: newQuestion,
       sceneChoices: newChoices,
       playerInteraction: newPlayerInteraction,
-      currentScene: sceneName
+      currentScene: sceneName,
     })
-
+    }
   }
 
   handleGameStart() {
@@ -147,7 +162,7 @@ export default class Scene extends React.Component {
     if (!gamePaused) {
       this.setState(state => ({
         gamePaused: !state.gamePaused,
-        sceneBackgroundScr: 'https://d2wkqk610zk1ag.cloudfront.net/items/1x3u0g0u2f2a450n2x0n/ShareWithCareBG.jpg?X-CloudApp-Visitor-Id=19240'
+        sceneBackgroundScr: 'https://d2wkqk610zk1ag.cloudfront.net/items/010o0d1b390L251l0d39/ShareWithCareBG.jpg?X-CloudApp-Visitor-Id=19240'
       }));
     }
 
