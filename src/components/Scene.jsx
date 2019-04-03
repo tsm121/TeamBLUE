@@ -21,7 +21,7 @@ export default class Scene extends React.Component {
       sceneBackgroundScr: 'https://d2wkqk610zk1ag.cloudfront.net/items/1x3u0g0u2f2a450n2x0n/ShareWithCareBG.jpg?X-CloudApp-Visitor-Id=19240',
       sceneQuestion: "",
       sceneChoices: {},
-      currentScene: "scene_1",
+      currentScene: "atHome",
       playerInteraction: false,
       player1: {},
       player2: {},

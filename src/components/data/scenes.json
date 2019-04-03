@@ -1,28 +1,418 @@
 {
   "scenes": {
-    "scene_1": {
-      "backgroundURL": "https://bossdesigncenter.com/wp-content/uploads/2018/02/kitchen-remodeling-trends-2.jpg",
-      "question": "This is the question text",
-      "playerInteraction": true,
-      "choices": {
-        "choice1": {"text": "Text for choice 1", "scene": "scene_2"},
-        "choice2": {"text": "Text for choice 2", "scene": "scene_3"},
-        "choice3": {"text": "Text for choice 3", "scene": "scene_4"},
-        "choice4": {"text": "Text for choice 4", "scene": "scene_5"}
-      }
-    },
-
-    "scene_2": {
-      "backgroundURL": "https://www.readingviaduct.org/wp-content/uploads/2018/06/Schaefer-Park-Playground-1024x675.jpg",
-      "question": "This is a NEW question text",
+    "atHome": {
+      "backgroundURL": "https://ak9.picdn.net/shutterstock/videos/23858479/thumb/1.jpg",
+      "question": "The alarm clock was blaring, next to your face. Today you are supposed to go on a weekend getaway with Jane, the love of your life. Do you?",
       "playerInteraction": false,
       "choices": {
-        "choice1": {"text": "New Choice1", "scene": "scene_1"},
-        "choice2": {"text": "New Choice2", "scene": "scene_3"},
-        "choice3": {"text": "New Choice3", "scene": "scene_4"},
-        "choice4": {"text": "New Choice4", "scene": "scene_5"}
+        "choice1": {
+          "text": "Get up and go to the airport with Jane",
+          "scene": "airport01"
+        },
+        "choice2": {
+          "text": "Turn of the alarm and get a few more minutes of sleep",
+          "scene": "airport02"
+        },
+        "choice3": {
+          "text": "",
+          "scene": "atHome"
+        },
+        "choice4": {
+          "text": "",
+          "scene": "atHome"
+        }
+      }
+    },
+    "airport01": {
+      "backgroundURL": "http://d2um9prq37tvxi.cloudfront.net/9bdd60530eab9ead1e406ef0b7c72b4d.png",
+      "question": "You managed to get out of bed and go to the airport. Luckily Jane also got up so you didn't have to struggle to get her out of bed. What do you want to do while waiting for the plane?",
+      "playerInteraction": true,
+      "choices": {
+        "choice1": {
+          "text": "Post a picture of you and Jane to Instantgram as you enter the plane",
+          "scene": "airplane01"
+        },
+        "choice2": {
+          "text": "Buy some food and bring it to the plane",
+          "scene": "airplane01"
+        },
+        "choice3": {
+          "text": "Buy a book and bring it to the plane",
+          "scene": "airplane01"
+        },
+        "choice4": {
+          "text": "Take a nap while waiting for the plane",
+          "scene": "nap01"
+        }
+      }
+    },
+    "airport02": {
+      "backgroundURL": "http://d2um9prq37tvxi.cloudfront.net/9bdd60530eab9ead1e406ef0b7c72b4d.png",
+      "question": "You overslept. Luckily Jane got up and managed to get you both to the airport. What do you want to do while waiting for the plane?",
+      "playerInteraction": true,
+      "choices": {
+        "choice1": {
+          "text": "Post a picture of you and Jane to Instantgram as you enter the plane",
+          "scene": "airplane01"
+        },
+        "choice2": {
+          "text": "Buy some food and bring it to the plane",
+          "scene": "airplane01"
+        },
+        "choice3": {
+          "text": "Buy a book and bring it to the plane",
+          "scene": "airplane01"
+        },
+        "choice4": {
+          "text": "Take a nap while waiting for the plane",
+          "scene": "nap01"
+        }
+      }
+    },
+    "airplane01": {
+      "backgroundURL": "https://ak6.picdn.net/shutterstock/videos/6811366/thumb/1.jpg",
+      "question": "You took a selfie of yourself and Jane at the airport before entering the plane. 'Holiday here we come' you wrote underneath as you posted it to Instantgram. What do you do to pass time on the plane?",
+      "playerInteraction": true,
+      "choices": {
+        "choice1": {
+          "text": "Post another picture of you and Jane to Instantgram",
+          "scene": "transport01"
+        },
+        "choice2": {
+          "text": "Watch a movie",
+          "scene": "transport01"
+        },
+        "choice3": {
+          "text": "Listen to some music",
+          "scene": "transport01"
+        },
+        "choice4": {
+          "text": "Watch the skies",
+          "scene": "transport01"
+        }
+      }
+    },
+    "nap01": {
+      "backgroundURL": "https://cdn.cnn.com/cnnnext/dam/assets/131021180621-best-airport-sleep-hong-kong-horizontal-large-gallery.jpg",
+      "question": "You both decided to take a nap and ended up missing the plane! Sadly this exciting story isn't part of the demo! To see what happends next, please buy the full game at release!",
+      "playerInteraction": true,
+      "choices": {
+        "choice1": {
+          "text": "Restart Demo",
+          "scene": "atHome"
+        },
+        "choice2": {
+          "text": "Restart Demo",
+          "scene": "atHome"
+        },
+        "choice3": {
+          "text": "Restart Demo",
+          "scene": "atHome"
+        },
+        "choice4": {
+          "text": "Restart Demo",
+          "scene": "atHome"
+        }
+      }
+    },
+    "transport01": {
+      "backgroundURL": "https://www.backpackerguide.nz/wp-content/uploads/2016/05/Auckland-airport-transfers.jpg",
+      "question": "You and Jane arrive at your holiday destination. Do you have a preference when it comes to transport? ",
+      "playerInteraction": true,
+      "choices": {
+        "choice1": {
+          "text": "Buss",
+          "scene": "transport02"
+        },
+        "choice2": {
+          "text": "Taxi",
+          "scene": "transport02"
+        },
+        "choice3": {
+          "text": "Pirate Taxi",
+          "scene": "transport02"
+        },
+        "choice4": {
+          "text": "Don't care",
+          "scene": "transport02"
+        }
+      }
+    },
+    "transport02": {
+      "backgroundURL": "https://www.backpackerguide.nz/wp-content/uploads/2016/05/Auckland-airport-transfers.jpg",
+      "question": "You and Jane weren't able to agree on transport.",
+      "playerInteraction": true,
+      "choices": {
+        "choice1": {
+          "text": "Buss",
+          "scene": "hotel01"
+        },
+        "choice2": {
+          "text": "Taxi",
+          "scene": "hotel01"
+        },
+        "choice3": {
+          "text": "Pirate Taxi",
+          "scene": "death01"
+        },
+        "choice4": {
+          "text": "Don't care",
+          "scene": "hotel01"
+        }
+      }
+    },
+    "death01": {
+      "backgroundURL": "https://i.pinimg.com/originals/8f/3c/24/8f3c24e8fc3d78d515453a26dc6499c7.jpg",
+      "question": "It turned out the guy with the pirate taxi was a murderer. You and Jane were killed!",
+      "playerInteraction": true,
+      "choices": {
+        "choice1": {
+          "text": "Restart Demo",
+          "scene": "atHome"
+        },
+        "choice2": {
+          "text": "Restart Demo",
+          "scene": "atHome"
+        },
+        "choice3": {
+          "text": "Restart Demo",
+          "scene": "atHome"
+        },
+        "choice4": {
+          "text": "Restart Demo",
+          "scene": "atHome"
+        }
+      }
+    },
+    "hotel01": {
+      "backgroundURL": "https://www.parkregisbirmingham.co.uk/wp-content/blogs.dir/24/files/hotel-exterior-reception/Reception.jpg",
+      "question": "You arrive at the hotel do. What do you want to do?",
+      "playerInteraction": true,
+      "choices": {
+        "choice1": {
+          "text": "Go to Pool",
+          "scene": "pool01"
+        },
+        "choice2": {
+          "text": "Go to Beach",
+          "scene": "beach01"
+        },
+        "choice3": {
+          "text": "Go to Museum",
+          "scene": "museum01"
+        },
+        "choice4": {
+          "text": "Go to Restaurant",
+          "scene": "restaurant01"
+        }
+      }
+    },
+    "pool01": {
+      "backgroundURL": "http://www.hotelestelou.com/jpg/c_d_b_3549-ee1bf825284f31ad5017b83f88304ab8/boutique-hotel-sud-de-france-espace-piscine.jpg",
+      "question": "You arrive at the pool",
+      "playerInteraction": true,
+      "choices": {
+        "choice1": {
+          "text": "Go back to room",
+          "scene": "hotelroom01"
+        },
+        "choice2": {
+          "text": "Go back to room",
+          "scene": "hotelroom01"
+        },
+        "choice3": {
+          "text": "Go back to room",
+          "scene": "hotelroom01"
+        },
+        "choice4": {
+          "text": "Go back to room",
+          "scene": "hotelroom01"
+        }
+      }
+    },
+    "beach01": {
+      "backgroundURL": "https://www.farebuzz.com/born-free/wp-content/uploads/2016/01/crowded-beaches.jpg",
+      "question": "You arrive at the beach",
+      "playerInteraction": true,
+      "choices": {
+        "choice1": {
+          "text": "Go back to room",
+          "scene": "hotelroom01"
+        },
+        "choice2": {
+          "text": "Go back to room",
+          "scene": "hotelroom01"
+        },
+        "choice3": {
+          "text": "Go back to room",
+          "scene": "hotelroom01"
+        },
+        "choice4": {
+          "text": "Go back to room",
+          "scene": "hotelroom01"
+        }
+      }
+    },
+    "museum01": {
+      "backgroundURL": "https://santabarbaraca.com/content/uploads/2015/08/santa-barbara-museums.jpg",
+      "question": "You arrive at the museum",
+      "playerInteraction": true,
+      "choices": {
+        "choice1": {
+          "text": "Go back to room",
+          "scene": "hotelroom01"
+        },
+        "choice2": {
+          "text": "Go back to room",
+          "scene": "hotelroom01"
+        },
+        "choice3": {
+          "text": "Go back to room",
+          "scene": "hotelroom01"
+        },
+        "choice4": {
+          "text": "Go back to room",
+          "scene": "hotelroom01"
+        }
+      }
+    },
+    "restaurant01": {
+      "backgroundURL": "https://www.sugarbeachresort.com/sites/default/files/styles/1200_650/public/externals/Sugar_Beach_Restaurants_Tides_2-1600x900-ed8b7a8d-5684-41ee-a0e8-2b67031dc2c3.jpg?itok=3Qw-E5Mi",
+      "question": "You arrive at the restaurant",
+      "playerInteraction": true,
+      "choices": {
+        "choice1": {
+          "text": "Go back to room",
+          "scene": "hotelroom01"
+        },
+        "choice2": {
+          "text": "Go back to room",
+          "scene": "hotelroom01"
+        },
+        "choice3": {
+          "text": "Go back to room",
+          "scene": "hotelroom01"
+        },
+        "choice4": {
+          "text": "Go back to room",
+          "scene": "hotelroom01"
+        }
+      }
+    },
+    "hotelroom01": {
+      "backgroundURL": "https://www.regalhotel.com/uploads/rrh/accommodations/720x475/DeluxeSuite_FINAL_large.jpg",
+      "question": "It have been an amazing day. What do you do.",
+      "playerInteraction": true,
+      "choices": {
+        "choice1": {
+          "text": "Post about it on social media",
+          "scene": "airport04"
+        },
+        "choice2": {
+          "text": "Post about it on social media",
+          "scene": "airport04"
+        },
+        "choice3": {
+          "text": "Post about it on social media",
+          "scene": "airport04"
+        },
+        "choice4": {
+          "text": "Go to sleep",
+          "scene": "airport04"
+        }
+      }
+    },
+    "airport04": {
+      "backgroundURL": "http://d2um9prq37tvxi.cloudfront.net/9bdd60530eab9ead1e406ef0b7c72b4d.png",
+      "question": "You arrive back at your local airport after an amazing holiday. What do you do?",
+      "playerInteraction": true,
+      "choices": {
+        "choice1": {
+          "text": "Post about coming home on social media before grabbing a taxi",
+          "scene": "ending01"
+        },
+        "choice2": {
+          "text": "Find some transport home",
+          "scene": "ending02"
+        },
+        "choice3": {
+          "text": "",
+          "scene": "airport04"
+        },
+        "choice4": {
+          "text": "",
+          "scene": "airport04"
+        }
+      }
+    },
+    "ending01": {
+      "backgroundURL": "https://news.bitcoin.com/wp-content/uploads/2016/08/Robbery.jpg",
+      "question": "You come home to your house broken into and the thief is still inside! Maybe you shouldn't have posted about being on holiday on social media!",
+      "playerInteraction": true,
+      "choices": {
+        "choice1": {
+          "text": "Start Over",
+          "scene": "atHome"
+        },
+        "choice2": {
+          "text": "Start Over",
+          "scene": "atHome"
+        },
+        "choice3": {
+          "text": "Start Over",
+          "scene": "atHome"
+        },
+        "choice4": {
+          "text": "Start Over",
+          "scene": "atHome"
+        }
+      }
+    },
+    "ending02": {
+      "backgroundURL": "https://static1.st8fm.com/en_US/content_pages/1/pages/simple-insights/img/60-pretend-youre-home-burglary-prevention-wide.jpg",
+      "question": "You come home to your house broken into. Maybe you shouldn't have posted about being on holiday on social media!",
+      "playerInteraction": true,
+      "choices": {
+        "choice1": {
+          "text": "Start Over",
+          "scene": "atHome"
+        },
+        "choice2": {
+          "text": "Start Over",
+          "scene": "atHome"
+        },
+        "choice3": {
+          "text": "Start Over",
+          "scene": "atHome"
+        },
+        "choice4": {
+          "text": "Start Over",
+          "scene": "atHome"
+        }
+      }
+    },
+    "ending03": {
+      "backgroundURL": "https://phadvocates.org/wp-content/themes/cardinal/images/default-thumb.png",
+      "question": "You come home and settle down in the couch when you suddenly get a message from X and Y. Their house has been broken into! Maybe they shouldn't have posted about their holiday on social media, it's a good thing you didn't, or it could have been you!",
+      "playerInteraction": true,
+      "choices": {
+        "choice1": {
+          "text": "Start Over",
+          "scene": "atHome"
+        },
+        "choice2": {
+          "text": "Start Over",
+          "scene": "atHome"
+        },
+        "choice3": {
+          "text": "Start Over",
+          "scene": "atHome"
+        },
+        "choice4": {
+          "text": "Start Over",
+          "scene": "atHome"
+        }
       }
     }
-
   }
 }
