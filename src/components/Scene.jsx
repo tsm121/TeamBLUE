@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import React from 'react';
 
 import InteractionField from './InteractionField';
@@ -21,7 +22,7 @@ export default class Scene extends React.Component {
       sceneBackgroundScr: 'https://d2wkqk610zk1ag.cloudfront.net/items/010o0d1b390L251l0d39/ShareWithCareBG.jpg?X-CloudApp-Visitor-Id=19240',
       sceneQuestion: "",
       sceneChoices: {},
-      currentScene: "scene_1",
+      currentScene: "atHome",
       playerInteraction: false,
       socialMediaInteraction: false,
       player1: {},
@@ -108,15 +109,31 @@ export default class Scene extends React.Component {
 
   }
 
-  handleSceneChange (sceneName) {
-
+  handleSceneChange(sceneName) {
+    if (sceneName[0] === 'S') {
+      console.log('Social Media used')
+      sceneName = sceneName.slice(1);
+      this.setState({
+        socialMediaInteraction: true,
+      });
+    }
+    console.log(sceneName)
+    if (sceneName === "ending01") {
+      sceneName = this.state.socialMediaInteraction ? "ending03" : "ending05"
+    }
+    else if (sceneName === "ending02") {
+      sceneName = this.state.socialMediaInteraction ? "ending04" : "ending05"
+    }
+    else if (sceneName === "atHome") {
+      this.setState({
+        socialMediaInteraction: false,
+      });
+    }
     console.log("Change scene to " + "'" + sceneName + "'")
-
     this.prepareSceneChange(sceneName)
   }
 
-  prepareSceneChange (sceneName) {
-
+  prepareSceneChange(sceneName) {
     const {socialMediaInteraction} = this.state
 
 
@@ -125,18 +142,6 @@ export default class Scene extends React.Component {
     let newQuestion = scenes_lib.scenes[sceneName]["question"]
     let newPlayerInteraction = scenes_lib.scenes[sceneName]["playerInteraction"]
 
-    if (!socialMediaInteraction) {
-      let newSocialMediaInteraction = scenes_lib.scenes[sceneName]["socialMediaInteraction"]
-      this.setState({
-        sceneBackgroundScr: newBackground,
-        sceneQuestion: newQuestion,
-        sceneChoices: newChoices,
-        playerInteraction: newPlayerInteraction,
-        socialMediaInteraction: newSocialMediaInteraction,
-        currentScene: sceneName,
-      })
-    } else {
-
     this.setState({
       sceneBackgroundScr: newBackground,
       sceneQuestion: newQuestion,
@@ -144,7 +149,6 @@ export default class Scene extends React.Component {
       playerInteraction: newPlayerInteraction,
       currentScene: sceneName,
     })
-    }
   }
 
   handleGameStart() {
